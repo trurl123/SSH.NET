@@ -103,23 +103,7 @@ namespace Renci.SshNet.Sftp
                     }
 
                     //  Update file attributes
-                    //_attributes = _session.RequestFStat(_handle);
-		            try
-        		    {
-		                _attributes = _session.RequestFStat(_handle);
-        		    }
-		            catch (SshException ex)
-	    	        {
-						DiagnosticAbstraction.Log(string.Format("RequestFStat error: {0}", ex));
-	            	    _attributes = new SftpFileAttributes(
-	                    DateTime.MinValue,
-	                    DateTime.MinValue,
-	                    0,
-	                    0,
-	                    0,
-	                    uint.MaxValue,
-	                    null);
-		            }
+                    _attributes = _session.RequestFStat(_handle);
 
                     if (_attributes != null && _attributes.Size > -1)
                     {

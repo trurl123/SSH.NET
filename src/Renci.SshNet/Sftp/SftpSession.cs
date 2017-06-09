@@ -466,6 +466,15 @@ namespace Renci.SshNet.Sftp
 
             if (exception != null)
             {
+                if (exception.Message.Contains("Cannot find message"))
+                    return new SftpFileAttributes(
+                        DateTime.MinValue,
+                        DateTime.MinValue,
+                        0,
+                        0,
+                        0,
+                        uint.MaxValue,
+                        null);
                 throw exception;
             }
 
